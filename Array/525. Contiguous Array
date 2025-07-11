@@ -1,0 +1,16 @@
+class Solution:
+    def findMaxLength(self, nums: List[int]) -> int:
+        prev_sum=0
+        max_len=0
+        prev_map={0:-1}
+        for i,num in enumerate(nums):
+            prev_sum+=1 if num==1 else -1 
+
+            if prev_sum in prev_map:
+                max_len=max(max_len,i-prev_map[prev_sum])
+
+            else:
+                prev_map[prev_sum]=i
+        
+        return max_len
+        
